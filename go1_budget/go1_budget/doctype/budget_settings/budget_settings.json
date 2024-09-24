@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-28 16:17:48.757638",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "priority_1",
+  "column_break_din0z",
+  "priority_2",
+  "column_break_hs0ia",
+  "priority_3",
+  "column_break_llhtl",
+  "section_break_zgd1h",
+  "budget_based_on",
+  "section_break_bugij",
+  "budget_control",
+  "column_break_ssguh",
+  "user_not_restricted"
+ ],
+ "fields": [
+  {
+   "fieldname": "priority_1",
+   "fieldtype": "Select",
+   "label": "Priority 1",
+   "options": "\nCost Center\nGL Basis\nMandate"
+  },
+  {
+   "fieldname": "column_break_din0z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "priority_2",
+   "fieldtype": "Select",
+   "label": "Priority 2",
+   "options": "\nCost Center\nGL Basis\nMandate"
+  },
+  {
+   "fieldname": "column_break_hs0ia",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "priority_3",
+   "fieldtype": "Select",
+   "label": "Priority 3",
+   "options": "\nCost Center\nGL Basis\nMandate"
+  },
+  {
+   "fieldname": "column_break_llhtl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zgd1h",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "budget_based_on",
+   "fieldtype": "Select",
+   "label": "Budget Controls Based On",
+   "options": "Monthly\nQuarterly\nHalf Yearly\nAnnual"
+  },
+  {
+   "fieldname": "section_break_bugij",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "budget_control",
+   "fieldtype": "Table",
+   "label": "Account Not Restricted ",
+   "options": "Budget Control"
+  },
+  {
+   "fieldname": "column_break_ssguh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user_not_restricted",
+   "fieldtype": "Table",
+   "label": "User Not Restricted ",
+   "options": "Users Setting"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-09-24 13:09:35.465312",
+ "modified_by": "Administrator",
+ "module": "Go1 Budget",
+ "name": "Budget Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

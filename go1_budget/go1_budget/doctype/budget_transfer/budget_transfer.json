@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
+ "creation": "2024-08-28 16:18:45.505561",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "fiscal_year",
+  "column_break_acppd",
+  "transfer_of_budgets_between_two_gls_of",
+  "same_cost_centre_section",
+  "cost_centre",
+  "source_gl_account",
+  "source_mandate",
+  "amount",
+  "column_break_cff00",
+  "target_cost_center",
+  "target_gl_account",
+  "target_mandate",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "options": "SCC-.YYYY.-\nDCC-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "label": "Fiscal Year",
+   "options": "Fiscal Year"
+  },
+  {
+   "fieldname": "column_break_acppd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transfer_of_budgets_between_two_gls_of",
+   "fieldtype": "Select",
+   "label": "Transfer of budgets between two GLs of",
+   "options": "Same Cost Centre\nDifferent Cost Centre",
+   "reqd": 1
+  },
+  {
+   "fieldname": "same_cost_centre_section",
+   "fieldtype": "Section Break",
+   "label": "Same Cost Centre"
+  },
+  {
+   "fieldname": "cost_centre",
+   "fieldtype": "Link",
+   "label": "Source Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "source_gl_account",
+   "fieldtype": "Link",
+   "label": "Source Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "column_break_cff00",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_cost_center",
+   "fieldtype": "Link",
+   "label": "Target Cost Center",
+   "options": "Cost Center",
+   "read_only_depends_on": "eval:doc.transfer_of_budgets_between_two_gls_of == \"Same Cost Centre\""
+  },
+  {
+   "fieldname": "target_gl_account",
+   "fieldtype": "Link",
+   "label": "Target Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Budget Transfer",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Budget Transfer",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_mandate",
+   "fieldtype": "Link",
+   "label": "Source Mandate",
+   "options": "Mandate"
+  },
+  {
+   "fieldname": "target_mandate",
+   "fieldtype": "Link",
+   "label": "Target Mandate",
+   "options": "Mandate"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-09-24 13:12:52.300146",
+ "modified_by": "Administrator",
+ "module": "Go1 Budget",
+ "name": "Budget Transfer",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
