@@ -105,7 +105,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Iris Budget",
+   "options": "Go1 Budget",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -206,16 +206,7 @@
    "options": "Budget Account",
    "reqd": 1
   },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Iris Budget",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
+ 
   {
    "fieldname": "capital_expense",
    "fieldtype": "Data",
