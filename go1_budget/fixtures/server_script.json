@@ -9,7 +9,7 @@
   "doctype_event": "Before Save",
   "event_frequency": "All",
   "modified": "2024-09-12 19:23:06.471953",
-  "module": "Iris Budget",
+  "module": "Go1 Budget",
   "name": "add mandate in gl entry",
   "reference_doctype": "GL Entry",
   "script": "if not doc.against_voucher_type:\n    q = frappe.get_doc(doc.voucher_type, doc.voucher_no)\n    if doc.voucher_type == \"Expense Claim\":\n        w = q.expenses\n    elif doc.voucher_type in [\"Purchase Invoice\", \"Sales Invoice\", \"Purchase Receipt\"]:\n        w = q.items\n    elif doc.voucher_type == \"Journal Entry\":\n        w = q.accounts\n    else:\n        pass\n\n    for i in w:\n        if doc.voucher_type == \"Expense Claim\":\n            account_to_match = i.default_account\n        elif doc.voucher_type in [\"Purchase Invoice\", \"Sales Invoice\", \"Purchase Receipt\"]:\n            account_to_match = i.expense_account\n        elif doc.voucher_type == \"Journal Entry\":\n            account_to_match = i.account\n        \n        if account_to_match == doc.account:\n            doc.custom_mandate = i.custom_mandate\n            frappe.log_error(\"Mandate Set\", doc.custom_mandate)\n            break  \n",

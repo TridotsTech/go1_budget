@@ -177,7 +177,33 @@ app_license = "MIT"
 # ----------------
 # before_request = ["go1_budget.utils.before_request"]
 # after_request = ["go1_budget.utils.after_request"]
-
+doc_events = { 
+     
+    "Go1 Budget": {
+        "before_save": "go1_budget.api.calc_budget",
+        "on_update_after_submit":"go1_budget.api.update_monthly_distribution",
+        "on_submit":"go1_budget.api.update_monthly_distribution"
+    },
+    "Monthly Distribution": {
+        "before_validate": "go1_budget.api.calc_percent"
+    },
+    "Purchase Order":{
+        "on_submit":"go1_budget.go1_budget.doctype.go1_budget.go1_budget.custom_validate_budget"
+    },
+    "Material Request":{
+        "on_submit":"go1_budget.go1_budget.doctype.go1_budget.go1_budget.custom_validate_budget"
+    },
+    "Expense Claim":{
+        "on_submit":"go1_budget.go1_budget.doctype.go1_budget.go1_budget.get_gl_entries"
+    },
+    "Journal Entry":{
+        "on_submit":"go1_budget.go1_budget.doctype.go1_budget.go1_budget.build_gl_map"
+    },
+    # "Monthly Distribution": {
+    #     "before_validate": "iris_budget.iris_budget.doctype.iris_budget.iris_budget.calc_percent"
+    # }
+    
+}
 # Job Events
 # ----------
 # before_job = ["go1_budget.utils.before_job"]
@@ -213,3 +239,24 @@ app_license = "MIT"
 # auth_hooks = [
 # 	"go1_budget.auth.validate"
 # ]
+
+fixtures = [
+    {
+        "doctype": "Custom Field",
+         "filters": [
+            ["module", "=", "Go1 Budget"]
+        ]
+    },
+    {
+        "doctype": "Property Setter",
+         "filters": [
+            ["module", "=", "Go1 Budget"]
+        ]
+    },
+    {
+        "doctype": "Server Script",
+         "filters": [
+            ["module", "=", "Go1 Budget"]
+        ]
+    }
+]
