@@ -73,7 +73,7 @@
 #                 ELSE 0
 #             END) AS purchase_invoices
 #     FROM 
-#         `tabIris Budget` b
+#         `tabGo1 Budget` b
 #     LEFT JOIN
 #         `tabBudget Account` ba ON b.name = ba.parent
 #     LEFT JOIN 
@@ -275,7 +275,7 @@ def get_data(filters):
                 ELSE 0
             END) AS purchase_invoices
     FROM 
-        `tabIris Budget` b
+        `tabGo1 Budget` b
     LEFT JOIN
         `tabBudget Account` ba ON b.name = ba.parent
     LEFT JOIN 

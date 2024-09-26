@@ -47,7 +47,7 @@ class  Go1Budget(Document):
 				SELECT
 					b.name, ba.account, ba.custom_mandate
 				FROM
-					`tabIris Budget` b, `tabBudget Account` ba
+					`tabGo1 Budget` b, `tabBudget Account` ba
 				WHERE
 					ba.parent = b.name AND b.docstatus < 2 AND b.company = %s AND {} = %s AND
 					b.fiscal_year = %s AND b.name != %s AND ba.account IN ({}) AND ba.custom_mandate IN ({})
@@ -72,7 +72,7 @@ class  Go1Budget(Document):
 				SELECT
 					b.name, ba.account
 				FROM
-					`tabIris Budget` b, `tabBudget Account` ba
+					`tabGo1 Budget` b, `tabBudget Account` ba
 				WHERE
 					ba.parent = b.name AND b.docstatus < 2 AND b.company = %s AND {} = %s AND
 					b.fiscal_year = %s AND b.name != %s AND ba.account IN ({}) AND ba.custom_mandate = ""
@@ -152,7 +152,7 @@ class  Go1Budget(Document):
 def validate_expense_against_budget(args, expense_amount=0):
 	args = frappe._dict(args)
 	frappe.log_error("args initial",args)
-	if not frappe.get_all("Iris Budget", limit=1):
+	if not frappe.get_all("Go1 Budget", limit=1):
 		return
 
 	if args.get("company") and not args.fiscal_year:
@@ -161,7 +161,7 @@ def validate_expense_against_budget(args, expense_amount=0):
 			"Company", args.get("company"), "exception_budget_approver_role"
 		)
 
-	if not frappe.get_cached_value("Iris Budget", {"fiscal_year": args.fiscal_year, "company": args.company}):  # nosec
+	if not frappe.get_cached_value("Go1 Budget", {"fiscal_year": args.fiscal_year, "company": args.company}):  # nosec
 		return
 
 	if not args.account:
@@ -316,7 +316,7 @@ def validate_expense_against_budget(args, expense_amount=0):
 					b.action_if_annual_budget_exceeded_on_mr, b.action_if_accumulated_monthly_budget_exceeded_on_mr,
 					b.action_if_annual_budget_exceeded_on_po, b.action_if_accumulated_monthly_budget_exceeded_on_po
 				from
-					`tabIris Budget` b, `tabBudget Account` ba
+					`tabGo1 Budget` b, `tabBudget Account` ba
 				where
 					b.name=ba.parent and b.fiscal_year=%s
 					and ba.account=%s and b.docstatus=1
@@ -412,7 +412,7 @@ def get_quarter_end_date(posting_date):
 def check_budget_exists(fiscal_year, account, cost_center,mandate):
 	budget_count = frappe.db.sql("""
 		select count(b.name)
-		from `tabIris Budget` b
+		from `tabGo1 Budget` b
 		inner join `tabBudget Account` bd on b.name = bd.parent
 		where b.fiscal_year = %s and b.cost_center = %s and bd.account = %s and bd.custom_mandate = %s """, 
 		(fiscal_year, cost_center, account,mandate))[0][0]
@@ -460,7 +460,7 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 
 		currency = frappe.get_cached_value("Company", args.company, "default_currency")
 
-		msg = _("{0} IRIS Budget for Account {1} Mandate {7} against {2} {3} is {4}. It {5} exceed by {6}").format(
+		msg = _("{0} Go1 Budget for Account {1} Mandate {7} against {2} {3} is {4}. It {5} exceed by {6}").format(
 			_(action_for),
 			frappe.bold(args.account),
 			frappe.unscrub(args.budget_against_field),
@@ -491,7 +491,7 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 		diff = float(args.amount) - budget_amount
 		currency = frappe.get_cached_value("Company", args.company, "default_currency")
 
-		msg = _("{0} IRIS Budget for Account {1} Mandate {7} against {2} {3} is {4}. It {5} exceed by {6}").format(
+		msg = _("{0} Go1 Budget for Account {1} Mandate {7} against {2} {3} is {4}. It {5} exceed by {6}").format(
 			_(action_for),
 			frappe.bold(args.account),
 			frappe.unscrub(args.budget_against_field),

@@ -17,7 +17,7 @@ class BudgetTransfer(Document):
         query = """
                     SELECT ba.parent, ba.budget_amount, b.name ,b.monthly_distribution
                     FROM `tabBudget Account` ba
-                    JOIN `tabIris Budget` b ON ba.parent = b.name
+                    JOIN `tabGo1 Budget` b ON ba.parent = b.name
                     WHERE ba.account = %s
                         AND b.cost_center = %s
                         AND b.docstatus = 1
@@ -30,7 +30,7 @@ class BudgetTransfer(Document):
         # source_cc = frappe.db.sql("""
         #             SELECT ba.parent, ba.budget_amount, b.name ,b.monthly_distribution
         #             FROM `tabBudget Account` ba
-        #             JOIN `tabIris Budget` b ON ba.parent = b.name
+        #             JOIN `tabGo1 Budget` b ON ba.parent = b.name
         #             WHERE ba.account = %s
         #                 AND b.cost_center = %s
         #                 AND ba.custom_mandate =%s
@@ -45,7 +45,7 @@ class BudgetTransfer(Document):
     #         target_cc = frappe.db.sql("""
     #                 SELECT ba.parent, ba.budget_amount ,b.name ,b.monthly_distribution
     #                 FROM `tabBudget Account` ba
-    #                 JOIN `tabIris Budget` b ON ba.parent = b.name
+    #                 JOIN `tabGo1 Budget` b ON ba.parent = b.name
     #                 WHERE ba.account = %s
     #                     AND b.cost_center = %s
     #                     AND ba.custom_mandate =%s
@@ -57,7 +57,7 @@ class BudgetTransfer(Document):
     #         target_cc = frappe.db.sql("""
     #                 SELECT ba.parent, ba.budget_amount,b.name ,b.monthly_distribution
     #                 FROM `tabBudget Account` ba
-    #                 JOIN `tabIris Budget` b ON ba.parent = b.name
+    #                 JOIN `tabGo1 Budget` b ON ba.parent = b.name
     #                 WHERE ba.account = %s
     #                     AND b.cost_center = %s
     #                     AND ba.custom_mandate =%s
@@ -71,7 +71,7 @@ class BudgetTransfer(Document):
             query = """
                 SELECT ba.parent, ba.budget_amount, b.name, b.monthly_distribution
                 FROM `tabBudget Account` ba
-                JOIN `tabIris Budget` b ON ba.parent = b.name
+                JOIN `tabGo1 Budget` b ON ba.parent = b.name
                 WHERE ba.account = %s
                     AND b.cost_center = %s
                     AND b.docstatus = 1
@@ -89,7 +89,7 @@ class BudgetTransfer(Document):
             query = """
                 SELECT ba.parent, ba.budget_amount, b.name, b.monthly_distribution
                 FROM `tabBudget Account` ba
-                JOIN `tabIris Budget` b ON ba.parent = b.name
+                JOIN `tabGo1 Budget` b ON ba.parent = b.name
                 WHERE ba.account = %s
                     AND b.cost_center = %s
                     AND b.docstatus = 1

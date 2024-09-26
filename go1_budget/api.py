@@ -63,7 +63,7 @@ def get_gl_accounts(doctype, txt, searchfield, start, page_len, filters):
     return frappe.db.sql("""
         SELECT budget.account
         FROM `tabBudget Account` budget
-        JOIN `tabIris Budget` b ON b.name = budget.parent
+        JOIN `tabGo1 Budget` b ON b.name = budget.parent
         WHERE b.cost_center = %s 
         AND b.docstatus = 1
     """, (cost_center))

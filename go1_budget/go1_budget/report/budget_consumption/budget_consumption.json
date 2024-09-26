@@ -11,11 +11,11 @@
  "is_standard": "Yes",
  "modified": "2024-08-31 17:09:50.651016",
  "modified_by": "Administrator",
- "module": "Iris Budget",
+ "module": "Go1 Budget",
  "name": "Budget Consumption",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "Iris Budget",
+ "ref_doctype": "Go1 Budget",
  "report_name": "Budget Consumption",
  "report_type": "Script Report",
  "roles": [
