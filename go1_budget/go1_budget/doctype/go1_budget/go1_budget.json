@@ -208,7 +208,7 @@
   },
   {
    "fieldname": "capital_expense",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Capital Expense"
   }
  ],

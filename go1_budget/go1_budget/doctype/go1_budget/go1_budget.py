@@ -439,11 +439,7 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 			amount = 0
 	frappe.log_error("amt",amount)
 
-	# frappe.log_error("actual_expense",actual_expense)
-	# total_expense = 0
-
-	# frappe.log_error("expense",total_expense)
-	# if args.actual_expense and amount:
+	
 	total_expense = args.actual_expense + amount
 	frappe.log_error("total_expense",total_expense)
 
