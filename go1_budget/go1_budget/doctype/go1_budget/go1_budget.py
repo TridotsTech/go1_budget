@@ -482,10 +482,13 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 		else:
 			frappe.msgprint(msg, indicator="orange", title=_("Budget Exceeded"))
 
-	elif float(args.amount) > budget_amount :
+	elif float(args.amount) > budget_amount or float(args.debit) > budget_amount:
 		error_tense = _("will be")
-		diff = float(args.amount) - budget_amount
-		currency = frappe.get_cached_value("Company", args.company, "default_currency")
+		if float(args.debit):
+			diff = float(args.debit) - budget_amount
+		else:
+			diff = float(args.amount) - budget_amount
+		currency = frappe.get_cached_value("Company", args.company, "default_currency")                  
 
 		msg = _("{0} Go1 Budget for Account {1} Mandate {7} against {2} {3} is {4}. It {5} exceed by {6}").format(
 			_(action_for),
