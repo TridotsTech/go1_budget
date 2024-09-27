@@ -13,5 +13,34 @@ frappe.ui.form.on('Monthly Distribution', {
             }
         }
          frm.refresh_field('percentages');
+    },
+    onload(frm) {
+        if (frm.doc.__islocal) {
+            console.log(frm.doc)
+            return frm.call({
+                method: "iris_budget.api.get_months1",
+                args: {
+                    "doc": frm.doc
+                },
+                callback: function(r) {
+                    console.log(r.message)
+                    if (r.message) {
+                        frm.clear_table("percentages");
+                        for (var d of r.message){
+                            let row = frm.add_child("percentages");
+                            row.month = d.month;
+                            row.percentage_allocation = d.percentage_allocation;
+                            row.custom_amount = 0;
+                            row.idx = d.idx;
+                        }
+                        frm.refresh_field("percentages");
+                    }
+                }
+            });
+        }
+    },
+
+    refresh(frm) {
+        frm.toggle_display("distribution_id", frm.doc.__islocal);
     }
 });
