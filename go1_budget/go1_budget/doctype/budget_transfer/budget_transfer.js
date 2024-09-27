@@ -22,7 +22,7 @@ frappe.ui.form.on('Budget Transfer', {
                 frm.set_value('target_cost_center', frm.doc.cost_centre);
                 frm.set_query('target_gl_account', () => {
                     return {
-                        query: "iris_budget.api.get_gl_accounts", 
+                        query: "go1_budget.api.get_gl_accounts", 
                         filters: {
                             cost_center: frm.doc.cost_centre
                         }
@@ -31,7 +31,7 @@ frappe.ui.form.on('Budget Transfer', {
             }
             frm.set_query('source_gl_account', () => {
                 return {
-                    query: "iris_budget.api.get_gl_accounts", 
+                    query: "go1_budget.api.get_gl_accounts", 
                     filters: {
                         cost_center: frm.doc.cost_centre
                     }
@@ -42,7 +42,7 @@ frappe.ui.form.on('Budget Transfer', {
         if(frm.doc.transfer_of_budgets_between_two_gls_of == "Different Cost Centre"){
             frm.set_query('target_gl_account', () => {
                 return {
-                    query: "iris_budget.api.get_gl_accounts", 
+                    query: "go1_budget.api.get_gl_accounts", 
                     filters: {
                         cost_center: frm.doc.target_cost_center
                     }
@@ -53,7 +53,7 @@ frappe.ui.form.on('Budget Transfer', {
     refresh: function(frm) {
         frm.add_custom_button(__('Check Function'), function() {
             frappe.call({
-                method: 'iris_budget.custom_buying_controller.check_function',
+                method: 'go1_budget.custom_buying_controller.check_function',
                 callback: function(r) {
                     if (r) {
                         
