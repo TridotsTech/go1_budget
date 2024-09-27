@@ -444,6 +444,7 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 	frappe.log_error("total_expense",total_expense)
 
 	if total_expense > budget_amount:
+		frappe.log_error("if")
 		if args.actual_expense > budget_amount:
 			error_tense = _("is already")
 			diff = args.actual_expense - budget_amount
@@ -482,7 +483,8 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 		else:
 			frappe.msgprint(msg, indicator="orange", title=_("Budget Exceeded"))
 
-	elif float(args.amount) > budget_amount or float(args.debit) > budget_amount:
+	elif args.amount > budget_amount or args.debit > budget_amount:
+		frappe.log_error("else")
 		error_tense = _("will be")
 		if float(args.debit):
 			diff = float(args.debit) - budget_amount
@@ -881,6 +883,7 @@ def build_gl_map(doc, method=None):
                 "cost_center": d.cost_center,
                 "project": d.project,
                 "finance_book": doc.finance_book,
+				"amount": flt(d.debit, d.precision("debit"))
             }
 
             # Include custom_mandate only if it has a value
@@ -1021,6 +1024,7 @@ def get_gl_entries(doc, method=None):
 				"against": doc.employee,
 				"cost_center": data.cost_center or doc.cost_center,
 				"project": data.project or doc.project,
+				"amount":data.sanctioned_amount
 			}
 
 			# Add custom_mandate only if it's not empty
