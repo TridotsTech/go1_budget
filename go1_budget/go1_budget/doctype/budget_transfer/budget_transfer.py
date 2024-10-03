@@ -13,6 +13,7 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 class BudgetTransfer(Document):
+    
     def get_source_cc(self):
         query = """
                     SELECT ba.parent, ba.budget_amount, b.name ,b.monthly_distribution
